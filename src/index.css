@@ -73,7 +73,7 @@ h5,
 
 .left {
     width: 200px;
-    background-color: #363d4c;
+    background-color: #cbf512;
 }
 
 .right {
@@ -255,17 +255,17 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #dddddd;
+    background-color: #0ef068;
     background-clip: padding-box;
     min-height: 28px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #bbb;
+    background-color: #0bee50;
 }
 .headimg {  
     -webkit-filter: grayscale(1); /* Webkit */  
-    filter: gray; /* IE6-9 */    
+    filter: rgba(44, 7, 224, 0.925); /* IE6-9 */    
     filter: grayscale(1); /* W3C */  
 }  
 /* 灰色头像 */

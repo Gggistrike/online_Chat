@@ -123,7 +123,7 @@ const app = new Vue({
         socket.on("login", (userInfp) => {
             if (userInfp["repeat"]  === true)
              {
-                this.Toast(`用户：${userInfp.name},重复，请重新输入`, "alert-danger");   
+                this.Toast(`群星名称：${userInfp.name},重复，请重新输入`, "alert-danger");   
             }else
             {
                 if (this.userInfo.name !== userInfp.name) {
@@ -152,7 +152,7 @@ const app = new Vue({
         })
 
         socket.on("loginOut", (userInfo) => {
-            this.Toast(`宇宙大帝：${userInfo.name}已下线~`, "alert-info")
+            this.Toast(`宇宙大帝：${userInfo.name}已退出群星聊天`, "alert-info")
             let newList = this.userList.map(user => {
                 if (user.name === userInfo.name) {
                     user.onLine = false;
