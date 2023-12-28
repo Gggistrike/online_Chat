@@ -1,4 +1,4 @@
-# socket实现在线聊天平台
+# socket.io实现在线聊天平台
 
 #### 介绍
 基于node.js，socket.io，原生js实现在线聊天

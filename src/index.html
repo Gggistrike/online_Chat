@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>youyou在线聊天系统</title>
+    <title>群星聊天系统-赛博坦星球专供版</title>
     <link rel="stylesheet" href="/bootstrap.min.css">
     <link rel="stylesheet" href="/index.css">
     <script src="/socket.io/socket.io.js" charset="utf-8"></script>
@@ -20,15 +20,15 @@
         <div class="alert" v-show="alter.isShow" :class="alter.color" role="alert">{{alter.Info}}</div>
         <div v-show="main">
             <div class="Row">
-                <input type="text" class="form-control" v-model="userInfo.name" id="oName" placeholder="用户名">
+                <input type="text" class="form-control" v-model="userInfo.name" id="oName" placeholder="输入你名字，第一宇宙战士">
             </div>
-            <h5>请选择你的头像</h5>
+            <h5>请选择你的全息投影</h5>
             <div class="Row">
                 <img v-for="(image,index) of images" :key="index" :class="image['class']" :src="image['src']"
                     @click="ChangeImgColor(index)" class="rounded float-start images">
             </div>
             <div class="Row">
-                <button type="button" @click="login" class="btn btn-primary">确定</button>
+                <button type="button" @click="login" class="btn btn-primary">接入群星幻海</button>
             </div>
         </div>
         <div v-show="!main" class="hall">

@@ -69,7 +69,7 @@ const app = new Vue({
         },
         login() {
             if (this.userInfo.name == "") {
-                this.Toast("请输入名字", "alert-danger");
+                this.Toast("输入你姓名，第一宇宙战士", "alert-danger");
                 return;
             }
             this.socket.emit("login", {
@@ -101,7 +101,7 @@ const app = new Vue({
         CreateRoom() {
             if (e.target.nodeName.toLowerCase() !== "button") return
             if (e.target.innerText === "创建") {
-                let roomName = window.prompt("请输入创建的房间名")
+                let roomName = window.prompt("输入你的星球聊天群名字")
                 if (roomName) {
                     this.socket.emit("createRoom", {
                         roomName,
@@ -127,9 +127,9 @@ const app = new Vue({
             }else
             {
                 if (this.userInfo.name !== userInfp.name) {
-                    this.Toast(`用户${userInfp.name}上线了，快来和他聊天吧~`, "alert-info");
+                    this.Toast(`宇宙大帝之一：${userInfp.name}上线了，快来和他聊天吧~`, "alert-info");
                 } else {
-                    this.Toast(`用户：${userInfp.name}，欢迎您`, "alert-info");
+                    this.Toast(`尊贵的宇宙大帝：${userInfp.name}，欢迎进入宇宙聊天群`, "alert-info");
                     this.userInfo = userInfp
                     this.main = false;
                     socket.emit("init", JSON.stringify(this.userInfo))
@@ -152,7 +152,7 @@ const app = new Vue({
         })
 
         socket.on("loginOut", (userInfo) => {
-            this.Toast(`用户${userInfo.name}已下线~`, "alert-info")
+            this.Toast(`宇宙大帝：${userInfo.name}已下线~`, "alert-info")
             let newList = this.userList.map(user => {
                 if (user.name === userInfo.name) {
                     user.onLine = false;
@@ -169,7 +169,7 @@ const app = new Vue({
     },
     computed: {
         countOline() {
-            return '群聊(' + eval(this.userList.length + 1) + ")"
+            return '群星聊天群(' + eval(this.userList.length + 1) + ")"
         }
     }
 });
