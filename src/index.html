@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>youyou在线聊天系统</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/index.css">
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script src="/vue.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app" class="context">
+        <div class="alert" v-show="alter.isShow" :class="alter.color" role="alert">{{alter.Info}}</div>
+        <div v-show="main">
+            <div class="Row">
+                <input type="text" class="form-control" v-model="userInfo.name" id="oName" placeholder="用户名">
+            </div>
+            <h5>请选择你的头像</h5>
+            <div class="Row">
+                <img v-for="(image,index) of images" :key="index" :class="image['class']" :src="image['src']"
+                    @click="ChangeImgColor(index)" class="rounded float-start images">
+            </div>
+            <div class="Row">
+                <button type="button" @click="login" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+        <div v-show="!main" class="hall">
+            <div class="left">
+                <div class="My-info">
+                    <img :src="userInfo.image">
+                    <span>{{userInfo.name}}</span>
+                </div>
+                <ul>
+                    <li v-for="item of userList" :key="item.id"><img :class="item.onLine?'':'headimg'" :src="item.image"><span>{{item.name}}</span></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="header">{{countOline}}</div>
+                <div class="main">
+                    <ul class="message-ul">
+                        <template v-for="(myMes,index) of Allmessage" :key="index">
+                            <li v-if="userInfo.name === myMes.userInfo.name" class="li-right">
+                                <span class="myMessage">{{myMes.mes}} </span>
+                                <span class="myMessageName">{{myMes.userInfo.name}}</span>
+                                <img :src="myMes.userInfo.image">
+                            </li>
+                            <li v-if="userInfo.name !== myMes.userInfo.name" class="li-left">
+                                <img :src="myMes.userInfo.image">
+                                <span class="otherMessageName">{{myMes.userInfo.name}}</span>
+                                <span class="otherMessage">{{myMes.mes}} </span>
+                            </li>
+                        </template>
+
+                    </ul>
+                </div>
+                <div class="footer"><textarea @keyup.Enter.Ctrl="sendMessage" placeholder="Ctrl+Enter发送"
+                        v-model="message" cols="30" rows="10"></textarea><button @click="sendMessage"> &nbsp;发送&nbsp;
+                    </button></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="/index.js"></script>
+
+</html>

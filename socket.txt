@@ -1,0 +1,10 @@
+1、socket.emit 派发一个事件 + 消息
+2、io.on("connection",(socket)=>{console.log(socket.id);})
+3、socket.send 发送一条消息 默认事件为message 
+4、服务端订阅自定义事件login消息 socket.on("login",function(obj){ io.emit("login",obj)})
+5、socket.on("message",(mes)=>{console.log(mes);}) 订阅message消息
+6、socket.broadcast("layout") 服务器向其他客户端发送消息
+7、socket.join(channel) 创建一个频道 比如斗地主
+8、io.socket.in(channel) 加入一个频道
+9、socket.broadcast.to(channel).eimt("mes",mes) 向一个频道发消息不包括自己
+10、获取所有频道消息 io.socket.adapter.rooms 获取所有频道消息
